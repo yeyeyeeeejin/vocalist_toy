@@ -1,8 +1,26 @@
 import React,{useState,useEffect}  from 'react';
-import logo from './logo.svg';
 import './App.css';
+import WordList  from './components/wordList';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './config/firebase';
+import WordCataory from './components/wordCataory';
+import "./components/css/header.css"
+
+function Header (){
+  return(
+    <div className="header">
+    <h1>Vocalist</h1>
+      <WordCataory/>
+    </div>
+  )
+}
+function Contents () {
+  return (//단어 리스트부분
+      <div>
+          <WordList></WordList>
+      </div>
+  )
+}
 
 function App() {
   const[word,setWord] =useState();
@@ -19,25 +37,20 @@ function App() {
   useEffect(() => {
     getWordlist();
   },[]);
-  
+
+
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+        <div className="Box">
+        <Header/>
+          <Contents/>
+        </div>
     </div>
   );
 }
+/*
 
+*/
 export default App;

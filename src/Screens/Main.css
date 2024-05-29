@@ -1,0 +1,70 @@
+/*밖에서 감싸고 있는 div에 
+ display: flex, align-items: center
+ 적용하면 안에 있는 요소들 정가운데 정렬
+*/
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:lemonchiffon;
+    flex-direction: column;
+}
+
+.mainbox{
+    width: 550px;
+    height: 650px;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    background-color:paleturquoise;
+    flex-direction: column;/*세로 정렬*/
+}
+
+.header{
+    width: 100%;
+    height: 30%;
+
+}
+.options{
+    display: flex; 
+    flex-direction:row;
+    flex-wrap : wrap;
+    margin: 10px;
+    justify-content:center;
+}
+.addWord{
+    background-color: #ffffff; /* Green */
+    border: none;
+    color: #000;
+    padding: 7px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    align-self: flex-end;
+    margin-left: 10px;    
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+
+}
+
+.button{
+    background-color: #ffffff; /* Green */
+    border: none;
+    color: #000;
+    padding: 7px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;    
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+
+    
+    transition-duration: 0.4s;
+}
+.button:hover {
+    background-color: #dbe1a4; /* Green */
+    color: white;
+  }
+
+.contents{
+    width: 100%;
+    height: 70%;
+}

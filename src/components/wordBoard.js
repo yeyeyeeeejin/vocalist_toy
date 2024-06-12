@@ -1,33 +1,39 @@
 import { useState } from 'react';
 import { useRef } from 'react';
-import './wordBoard.css';
+import './css/wordBoard.css';
+import './css/btn.css';
 
 /* 카테고리 수정 / 삭제 */
-function CategoryUpdate() {
+export function CategoryUpdate() {
   const [modalOpen, setModalOpen] = useState(false);
+  
+  const closeModal = ()=>{
+    setModalOpen(!modalOpen);
+  }
   const modalBackground = useRef();
 
   return (
-    <>
-      <div className={'btn-wrapper'}>
-        <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}>
+    <div>
+       <div className={'btn-wrapper'}>
+        <button className={'button'} onClick={() => setModalOpen(true)}>
           카테고리 설정
         </button>
-      </div>
+      </div> 
       {
         modalOpen &&
-        <div className={'modal-container'} ref={modalBackground} onClick={e => {
+        <div className='modal'>
+        <div className='overlay' ref={modalBackground} onClick={e => {
           if (e.target === modalBackground.current) {
             setModalOpen(false);
-          }
-        }}>
-          <div className={'modal-content'}>
+          }}}>  
+          <div className='modal-content'>
             <div className='setCategory'>
               <h1 className='categoryTitle'>카테고리 설정</h1>
 
               <div className='addCategory'>
                 <AddCategory />
               </div>
+              <button onClick={closeModal}>뒤로가기</button>
 
               <div className='category-radio'>
                 <div className='form-check'>
@@ -43,10 +49,12 @@ function CategoryUpdate() {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+          </div>
       }
-    </>
-  );
+    </div> 
+    
+  )
 }
 
 /* 카테고리 추가 */
@@ -82,40 +90,38 @@ function Btn ({text}) {
 }
 
 /* 단어 추가 */
-function AddWord() {
+export function AddWord() {
   const [modalOpen, setModalOpen] = useState(false);
   const modalBackground = useRef();
   
   return (
     <>
       <div className={'btn-wrapper'}>
-        <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}>
+        <button className={'button'} onClick={() => setModalOpen(true)}>
           단어추가
         </button>
       </div>
       {
         modalOpen &&
-        <div className={'modal-container'} ref={modalBackground} onClick={e => {
+        <div className='modal'>
+        <div className='overlay' ref={modalBackground} onClick={e => {
           if (e.target === modalBackground.current) {
             setModalOpen(false);
           }
         }}>
-          <div className={'modal-content'}>
+          <div className='modal-content'>
             <h1 className='wordTitle'>단어추가</h1>
-
-            <div className='addWord'>
               <WordName text='단어명' />
               <WordName text='단어뜻' />
-
               <WordCategorydiv />
-
               <div className='btn'>
                 <Btn text='추가' />
-              </div>
-            </div>              
+              </div>            
           </div>
         </div>
+      </div>
       }
+      
     </>
   );
 }
@@ -158,7 +164,7 @@ function WordUpdate() {
       </div>
       {
         modalOpen &&
-        <div className={'modal-container'} ref={modalBackground} onClick={e => {
+        <div className={'modal'} ref={modalBackground} onClick={e => {
           if (e.target === modalBackground.current) {
             setModalOpen(false);
           }
@@ -210,4 +216,3 @@ function App() {
   );
 }
 
-export default App;

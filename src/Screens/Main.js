@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import './Main'
 import DropDown from '../components/DropDown'
+import {CategoryUpdate, AddWord} from '../components/wordBoard';
+
 
 export default function Main (){
     const [selected,setSelected] =useState("");
-
-
     return(
         <div className="container">
             <div className="mainbox">
                 <div className="header">
                     <h1>단어장</h1>
-                    <button type="button" className="addWord">단어추가</button>
+                    
                     <div className="options">
                         <DropDown selected={selected}
                             setSelected={setSelected}
                         />
-                        <button type="button" className="button">카테고리 설정</button>
+                        <AddWord/>
+                        <CategoryUpdate/>
                         <button type="button" className="button">가리기!</button>
                     </div>
                 </div>
